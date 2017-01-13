@@ -1,6 +1,6 @@
-default: lint test
+default: lint test-unit
 
-test:
+test-unit:
 	python -m unittest discover
 
 lint:
