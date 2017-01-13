@@ -5,4 +5,3 @@ if __name__ == '__main__':
     MYVALIDATOR = validator.Validator()
 
     print type(MYVALIDATOR)
-    print MYVALIDATOR.validate()

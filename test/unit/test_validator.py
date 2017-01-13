@@ -5,11 +5,12 @@ import lib.validator as validator
 class TestValidator(unittest.TestCase):
 
     def setUp(self):
-        self.subject = validator.Validator()
+        self.validator = validator.Validator()
 
     def test_validate(self):
-        thing_that_is_true = True
+        thing_that_is_true = self.validator.isvalid()
         self.assertTrue(thing_that_is_true)
 
-    def test_validator(self):
-        print type(self.subject)
+    def rejects_missing_arguments(self):
+        self.validator.isvalid()
+        print type(self.validator)
