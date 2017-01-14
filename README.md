@@ -11,6 +11,15 @@ Then to lint the code, run
 
 Tests
 
-To run the tests
+To execute the tests, run:
 
 `make test-unit`
+
+To execute the application run:
+
+`make run`
+
+
+To lint, unit test and execute the program with some default values run
+
+`make`
