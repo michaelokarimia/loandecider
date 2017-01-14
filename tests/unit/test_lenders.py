@@ -1,10 +1,10 @@
 import unittest
-import io
+import app.lenders as lenders
 # pylint: disable=R0904
 class TestLender(unittest.TestCase):
     filename = "market_file.csv"
 
-    def test_lenders_parsed_from_file(self):
-        marketfile = io.open(self.filename, encoding='utf-8')
-        self.assertEqual(marketfile.name, 0, marketfile.name)
-        marketfile.close()
+    def test_loads_lenders_parses_from_file(self):
+        lenderlist = lenders.Lenders(self.filename)
+        lenderlist.load_lenders()
+        self.assertEqual(lenderlist.lenders, 1)
