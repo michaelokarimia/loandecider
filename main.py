@@ -14,6 +14,6 @@ if __name__ == '__main__':
 
     APPROVER = approver.Approver(LENDERS)
 
-    DESCISION = APPROVER.getdecision(ARGS.loanamount)
+    DESCISION = APPROVER.get_decision(ARGS.loanamount)
 
     print DESCISION.display()
