@@ -6,8 +6,8 @@ class TestLoanApprover(unittest.TestCase):
     requestedamount = 1000
 
     def setUp(self):
-
-        self.approver = approver.Approver()
+        lenders = []
+        self.approver = approver.Approver(lenders)
 
     def test_returns_requested_loan(self):
         mydecision = self.approver.getdecision(self.requestedamount)

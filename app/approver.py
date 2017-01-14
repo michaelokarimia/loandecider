@@ -1,8 +1,8 @@
 import app.decision as descision
 class Approver(object): # pylint: disable=too-few-public-methods
     """Calculates loan decisions"""
-    def __init__(self):
-        self.lenders = []
+    def __init__(self, lendersDict):
+        self.lenders = lendersDict
 
     def getdecision(self, requestedamount):
         """Returns a loan decision"""
