@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import argparse
-import app.calculator as calculator
+import app.approver as approver
 if __name__ == '__main__':
     print 'Starting app'
 
@@ -10,8 +10,8 @@ if __name__ == '__main__':
     ARGS = PARSER.parse_args()
     print "arg reader: Requested amount to loan " + str(ARGS.loanamount)
 
-    CALCULATOR = calculator.Calculator()
+    APPROVER = approver.Approver()
 
-    DESCISION = CALCULATOR.getdecision(ARGS.loanamount)
+    DESCISION = APPROVER.getdecision(ARGS.loanamount)
 
     print DESCISION.display()
