@@ -1,5 +1,5 @@
 import unittest
-import lib.calculator as calculator
+import app.calculator as calculator
 
 # pylint: disable=R0904
 class TestLoanCalculator(unittest.TestCase):

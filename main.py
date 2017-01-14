@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import argparse
-import lib.calculator as calculator
+import app.calculator as calculator
 if __name__ == '__main__':
     print 'Starting app'
 
