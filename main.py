@@ -8,10 +8,10 @@ if __name__ == '__main__':
     PARSER.add_argument('loanamount', type=int, help='integer representing how much the requested loan')
 
     ARGS = PARSER.parse_args()
-    print "Requested amout to loan " + str(ARGS.loanamount)
+    print "Requested amount to loan " + str(ARGS.loanamount)
 
     CALCULATOR = calculator.Calculator()
 
     DESCISION = CALCULATOR.getdecision(ARGS.loanamount)
 
-    print DESCISION
+    print DESCISION.display()
