@@ -25,4 +25,6 @@ class Approver(object): # pylint: disable=too-few-public-methods
         amount_available = 0
         if len(self.lenders) == 0:
             return 0
+
+        amount_available = self.lenders.values()[0][1]
         return amount_available

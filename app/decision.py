@@ -10,7 +10,7 @@ class Decision(object):
 
     def display(self):
         if self.insufficent_offers:
-            return "Unable to offer a loan as there insufficent offers"
+            return "Unable to offer a loan as there are insufficent offers"
         output = "Requested amount: £{0} \n Rate: {1}%".format(self.requestedamount, self.rate)
         output += "\n Monthly repayments: £{0}\n Total repayment: £{1}".format(self.monthlyrepayment, self.totalrepayment)
         return output

@@ -7,4 +7,4 @@ lint:
 	find . -name '*.py' -exec pylint --rcfile=pylint.cfg {} +
 
 run:
-	python main.py 999
+	python main.py 450

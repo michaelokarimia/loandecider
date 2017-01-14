@@ -3,7 +3,7 @@ import app.approver as approver
 
 # pylint: disable=R0904
 class TestApprover(unittest.TestCase):
-    requestedamount = 1000
+    requestedamount = 500
     lenders = {}
     approver = approver.Approver(lenders)
 
@@ -16,7 +16,7 @@ class TestApprover(unittest.TestCase):
         self.assertEqual(thedecision.insufficent_offers, True)
 
     def test_approves_when_suffcient_offers(self):
-        lenders = ['Bob', 0.075, 640]
+        lenders = {'Bob': [0.075, 640]}
         self.approver = approver.Approver(lenders)
         thedecision = self.approver.get_decision(self.requestedamount)
         self.assertEqual(thedecision.requestedamount, self.requestedamount)
