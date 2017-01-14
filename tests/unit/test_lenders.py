@@ -4,7 +4,7 @@ import app.lenders as lenders
 class TestLender(unittest.TestCase):
     filename = "market_file.csv"
 
-    def test_loads_lenders_parses_from_file(self):
+    def test_counts_loads_lenders_parsed_from_file(self):
         lenderlist = lenders.Lenders(self.filename)
         lenderlist.load_lenders()
-        self.assertEqual(lenderlist.lenders, 1)
+        self.assertEqual(lenderlist.lenderscount, 7)
