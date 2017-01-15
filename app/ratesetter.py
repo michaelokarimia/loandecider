@@ -15,7 +15,6 @@ class Ratesetter(object):
         self.loan, self.interest_rate, REPAYMENTPERIOD))
 
     def compound_interest_total_repayments(self, loan, rate, months):
-        print loan
         if months == 0:
             return loan
         else:
