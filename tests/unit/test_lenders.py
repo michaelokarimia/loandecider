@@ -16,7 +16,6 @@ class TestLender(unittest.TestCase):
     def test_can_load_test_data(self):
         lenderlist = lenders.Lenders(None)
         testdata = {'Bob': [0.075, 640]}
-        print "type of testdata is {0}".format(type(testdata))
         lenderlist.test_lender_data(testdata)
         self.assertEqual(len(lenderlist.lenders), 1)
         self.assertEqual(lenderlist.lenders['Bob'][0], float(0.075))
