@@ -20,26 +20,30 @@ class Lenders(object):
 
         marketfile.close()
 
-        runningtotal = 0.0
-
-        offers = {key:value[1] for key, value in self.lenders.items()}
-        #print offers
-
-        for lender, value in offers.items():
-            runningtotal += value[0]
-            print lender
-            print value
-        print runningtotal
-
-    def get_offers_for_loan(self, loanrequest):
+    def is_sufficient_offers(self, loanrequest):
+        print "number of lenders {0}".format(len(self.lenders))
         if len(self.lenders) == 0:
             return False
-        amount_available = self.lenders.values()[0][1]
+        amount_available = self.get_available_loan_amount() #self.lenders.values()[0][1]
+        print "requested amount {0}".format(loanrequest)
+        print "available amount to loan is {0}".format(amount_available)
         if loanrequest > amount_available:
             return False
-        print "available amount to load is {0}".format(amount_available)
         return True
 
     def test_lender_data(self, test_lender_data):
         self.lenders = test_lender_data
         self.lenderscount = 0
+
+    def get_available_loan_amount(self):
+        runningtotal = 0.0
+
+        offers = {key:value[1] for key, value in self.lenders.items()}
+        print offers
+
+        for lender, value in offers.items():
+            runningtotal += value
+            print lender
+            print value
+        print runningtotal
+        return runningtotal

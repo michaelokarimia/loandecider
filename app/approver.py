@@ -13,9 +13,9 @@ class Approver(object): # pylint: disable=too-few-public-methods
 
     def get_lender_approval(self, currentdescision):
 
-        if self.lenders.get_offers_for_loan(currentdescision):
-            currentdescision.insufficent_offers = True
-        else:
+        if self.lenders.is_sufficient_offers(currentdescision.requestedamount):
             currentdescision.insufficent_offers = False
+        else:
+            currentdescision.insufficent_offers = True
 
         return currentdescision
