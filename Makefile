@@ -7,4 +7,4 @@ lint:
 	find . -name '*.py' -exec pylint --rcfile=pylint.cfg {} +
 
 run:
-	python main.py 450
+	python main.py 'market_file.csv' 450
