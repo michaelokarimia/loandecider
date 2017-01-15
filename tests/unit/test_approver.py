@@ -6,7 +6,7 @@ import app.lenders as thelenders
 class TestApprover(unittest.TestCase):
     requestedamount = 500
 
-    approver = approver.Approver(None) #approver.Approver(lenders)
+    approver = approver.Approver(None)
 
     def setUp(self):
         lenders = thelenders.Lenders(None)
