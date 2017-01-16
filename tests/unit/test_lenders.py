@@ -1,5 +1,7 @@
 import unittest
 import app.lenders as lenders
+import app.decision as decision
+
 # pylint: disable=R0904
 class TestLender(unittest.TestCase):
     filename = "market_file.csv"
@@ -32,3 +34,12 @@ class TestLender(unittest.TestCase):
         lenderlist.test_lender_data({'Bob': [0.075, 51.0], 'Sue': [0.075, 50.0]})
         self.assertEqual(len(lenderlist.lenders), 2)
         self.assertTrue(lenderlist.is_sufficient_offers(100.0))
+
+    def test_get_decision(self):
+        lenderlist = lenders.Lenders(None)
+        lenderlist.test_lender_data({'Bob': [0.075, 640.3]})
+        testdecision = decision.Decision()
+        adecision = lenderlist.get_decision(testdecision)
+        self.assertEqual(len(lenderlist.lenders), 1)
+        self.assertTrue(lenderlist.is_sufficient_offers(60.0))
+        self.assertEqual(adecision.rate, 0.075)
