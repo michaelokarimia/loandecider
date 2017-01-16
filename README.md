@@ -1,7 +1,9 @@
-#Setup
+#Loan Decider
 
 A simple console app which calculates loan decisions for prospective borrowers to
 obtain a quote from our pool of lenders for 36 month loans
+
+##Setup
 
 Works on python 2.7
 
@@ -12,7 +14,7 @@ To lint the code first install pylint `sudo apt-get install pylint` for Debian b
 Then to lint the code, run
 `make lint`
 
-#Tests
+##Tests
 
 To execute the tests, run:
 
