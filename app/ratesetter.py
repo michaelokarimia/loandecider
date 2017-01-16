@@ -26,11 +26,11 @@ class Ratesetter(object):
 
         monthly_rate = Decimal((self.interest_rate * 100) / 100 / 12)
         principle = Decimal(self.loan)
-        print "principle {0}".format(principle)
-        print "rate as decimal {0}".format(monthly_rate)
+        #print "principle {0}".format(principle)
+        #print "rate as decimal {0}".format(monthly_rate)
 
         repayments = (principle * monthly_rate) / (1 -((1 + monthly_rate) ** (-REPAYMENTPERIOD)))
 
-        print "repayments {0}".format(repayments)
+        #print "repayments {0}".format(repayments)
 
         return Decimal(repayments)

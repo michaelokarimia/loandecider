@@ -43,3 +43,11 @@ class TestLender(unittest.TestCase):
         self.assertEqual(len(lenderlist.lenders), 1)
         self.assertTrue(lenderlist.is_sufficient_offers(60.0))
         self.assertEqual(adecision.rate, 0.075)
+
+    def test_get_best_rate_from_lenders(self):
+        lenderlist = lenders.Lenders(None)
+        lenderlist.test_lender_data({'Bob': [0.075, 640.3], 'Sue': [0.035, 50.0]})
+        testdecision = decision.Decision()
+        rate = lenderlist.get_best_rate_from_lenders(testdecision.requestedamount)
+        self.assertEqual(len(lenderlist.lenders), 2)
+        self.assertEqual(rate, 0.035)
