@@ -1,5 +1,6 @@
 from decimal import Decimal
 REPAYMENTPERIOD = Decimal(36.0)
+TWOPLACES = Decimal(10) ** -2
 class Ratesetter(object):
 
     def __init__(self, rate, loan):
@@ -9,9 +10,8 @@ class Ratesetter(object):
         self.total_repayment = Decimal(0.0)
 
     def calculate(self):
-        self.monthly_repayment = Decimal(self.get_monthly_repayments())
-        self.total_repayment = Decimal(
-        self.monthly_repayment * REPAYMENTPERIOD)
+        self.monthly_repayment = Decimal(self.get_monthly_repayments()).quantize(TWOPLACES)
+        self.total_repayment = Decimal(self.monthly_repayment * REPAYMENTPERIOD).quantize(TWOPLACES)
 
     def get_monthly_repayments(self):
 
