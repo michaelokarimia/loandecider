@@ -11,21 +11,13 @@ class Ratesetter(object):
     def calculate(self):
         self.monthly_repayment = Decimal(self.get_monthly_repayments())
         self.total_repayment = Decimal(
-        self.compound_interest_total_repayments(
-        self.loan, self.interest_rate, REPAYMENTPERIOD))
-
-    def compound_interest_total_repayments(self, loan, rate, months):
-        if months == 0:
-            return loan
-        else:
-            return self.compound_interest_total_repayments((loan
-            * (Decimal(1.0) + rate) - self.monthly_repayment), rate, months - 1)
+        self.monthly_repayment * REPAYMENTPERIOD)
 
     def get_monthly_repayments(self):
 
         monthly_rate = Decimal((self.interest_rate * 100) / 100 / 12)
         principle = Decimal(self.loan)
 
-        repayments = (principle * monthly_rate) / (1 -((1 + monthly_rate) ** (-REPAYMENTPERIOD)))
+        repayments = (Decimal(principle * monthly_rate)) / (1 -((1 + monthly_rate) ** (-REPAYMENTPERIOD)))
 
-        return Decimal(repayments)
+        return round(Decimal(repayments), 8)

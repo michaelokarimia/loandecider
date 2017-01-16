@@ -9,6 +9,6 @@ class TestDecision(unittest.TestCase):
         subject = decision.Decision()
         subject.create_test_decision()
         display = subject.display()
-        expected = 'Requested amount: £300 \n Rate: 6.12%\n Monthly repayments: £30'
-        expected += '\n Total repayment: £400'
+        expected = 'Requested amount: £300 \n Rate: 6.12%\n Monthly repayments: £30.00'
+        expected += '\n Total repayment: £400.00'
         self.assertMultiLineEqual(display, expected)
