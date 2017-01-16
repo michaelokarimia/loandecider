@@ -41,7 +41,6 @@ class Lenders(object):
         return runningtotal
 
     def get_decision(self, adecision):
-        #adecision = decision.Decision()
         if self.is_sufficient_offers(adecision.requestedamount):
             adecision.rate = 0.075
         return adecision

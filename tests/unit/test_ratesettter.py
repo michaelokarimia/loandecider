@@ -3,8 +3,13 @@ import app.ratesetter as ratesetter
 # pylint: disable=R0904
 class TestRatesetter(unittest.TestCase):
     def test_calculates_interest(self):
-        rate = ratesetter.Ratesetter(rate=0.075, loan=100.0)
-        rate.calculate()
-        self.assertEqual(round(rate.monthly_repayment, 2), 0.21)
-        self.assertEqual(round(rate.total_repayment, 2), 1316.4)
-        self.assertEqual(round(rate.interest_rate, 3), 0.075)
+        calculator = ratesetter.Ratesetter(rate=0.075, loan=100.0)
+        calculator.calculate()
+        self.assertEqual(round(calculator.monthly_repayment, 2), 3.11)
+        self.assertEqual(round(calculator.total_repayment, 2), 832.24)
+        self.assertEqual(round(calculator.interest_rate, 3), 0.075)
+
+    def test_gets_monthly_repayments(self):
+        calculator = ratesetter.Ratesetter(rate=0.075, loan=100.0)
+        monthlyrepayment = calculator.get_monthly_repayments()
+        self.assertEqual(round(monthlyrepayment, 2), 3.11)
