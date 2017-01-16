@@ -45,7 +45,9 @@ class Lenders(object):
 
     def get_decision(self, decision):
         if self.is_sufficient_offers(decision.requestedamount):
+            decision.insufficent_offers = False
             decision.rate = self.get_best_rate_from_lenders(decision.requestedamount)
+            return decision
         return decision
 
     def get_best_rate_from_lenders(self, loan):
