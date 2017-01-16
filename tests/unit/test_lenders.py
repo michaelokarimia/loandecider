@@ -11,7 +11,7 @@ class TestLender(unittest.TestCase):
         lenderlist.load_lenders()
         self.assertEqual(lenderlist.lenderscount, 7)
         self.assertEqual(len(lenderlist.lenders), 7)
-        self.assertGreater(lenderlist.get_available_loan_amount(), 0.0)
+        self.assertGreater(lenderlist.get_max_available_loan(), 0.0)
         self.assertEqual(lenderlist.lenders['Bob'][0], float(0.075))
         self.assertEqual(lenderlist.lenders['Bob'][1], float(640.0))
 
@@ -23,19 +23,25 @@ class TestLender(unittest.TestCase):
         self.assertEqual(lenderlist.lenders['Bob'][0], float(0.075))
         self.assertEqual(lenderlist.lenders['Bob'][1], float(640.0))
 
+    def test_can_get_max_available_loan(self):
+        lenderlist = lenders.Lenders(None)
+        lenderlist.test_lender_data({'Bob': [0.075, 51.0], 'Sue': [0.075, 50.0]})
+        highestoffer = lenderlist.get_max_available_loan()
+        self.assertEqual(highestoffer, 51.0)
+
     def test_is_sufficient_when_one_offers_exists_for_loans(self):
         lenderlist = lenders.Lenders(None)
         lenderlist.test_lender_data({'Bob': [0.075, 640.3]})
         self.assertEqual(len(lenderlist.lenders), 1)
         self.assertTrue(lenderlist.is_sufficient_offers(60.0))
 
-    def test_is_sufficient_when_multiple_offers_sum_to_match_loans(self):
+    def test_is_sufficient_with_one_valid_offer_in_a_list(self):
         lenderlist = lenders.Lenders(None)
         lenderlist.test_lender_data({'Bob': [0.075, 51.0], 'Sue': [0.075, 50.0]})
         self.assertEqual(len(lenderlist.lenders), 2)
-        self.assertTrue(lenderlist.is_sufficient_offers(100.0))
+        self.assertTrue(lenderlist.is_sufficient_offers(51.0))
 
-    def test_get_decision(self):
+    def test_get_decision_returns_a_decision(self):
         lenderlist = lenders.Lenders(None)
         lenderlist.test_lender_data({'Bob': [0.075, 640.3]})
         testdecision = decision.Decision()

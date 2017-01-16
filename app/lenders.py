@@ -22,7 +22,7 @@ class Lenders(object):
     def is_sufficient_offers(self, loanrequest):
         if len(self.lenders) == 0:
             return False
-        amount_available = self.get_available_loan_amount()
+        amount_available = self.get_max_available_loan()
         if loanrequest > amount_available:
             return False
         return True
@@ -31,14 +31,17 @@ class Lenders(object):
         self.lenders = test_lender_data
         self.lenderscount = 0
 
-    def get_available_loan_amount(self):
-        runningtotal = 0.0
+    def get_max_available_loan(self):
+
+        highest_loan = 0.0
 
         offers = {key:value[1] for key, value in self.lenders.items()}
 
         for dummy_key, value in offers.items():
-            runningtotal += value
-        return runningtotal
+            if value > highest_loan:
+                highest_loan = value
+
+        return highest_loan
 
     def get_decision(self, decision):
         if self.is_sufficient_offers(decision.requestedamount):

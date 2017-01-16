@@ -36,13 +36,11 @@ class TestApprover(unittest.TestCase):
         thedecision = self.approver.get_decision(self.requestedamount)
         self.assertEqual(thedecision.requestedamount, self.requestedamount)
         self.assertEqual(thedecision.insufficent_offers, False)
-        self.assertEqual(thedecision.requestedamount, self.requestedamount)
 
-    def test_approves_when_multiple_offers_provide_a_sufficent_sum(self):
+    def test_declines_when_multiple_offers_below_loan(self):
         lenders = thelenders.Lenders(None)
         lenders.test_lender_data({'Bob': [0.075, 100], 'Keith': [0.5, 400], 'Ian': [0.02, 100]})
         self.approver = approver.Approver(lenders)
         thedecision = self.approver.get_decision(self.requestedamount)
         self.assertEqual(thedecision.requestedamount, self.requestedamount)
-        self.assertEqual(thedecision.insufficent_offers, False)
-        self.assertEqual(thedecision.requestedamount, self.requestedamount)
+        self.assertEqual(thedecision.insufficent_offers, True)
