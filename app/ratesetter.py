@@ -15,7 +15,6 @@ class Ratesetter(object):
         self.loan, self.interest_rate, REPAYMENTPERIOD))
 
     def compound_interest_total_repayments(self, loan, rate, months):
-        #print loan
         if months == 0:
             return loan
         else:
@@ -26,11 +25,7 @@ class Ratesetter(object):
 
         monthly_rate = Decimal((self.interest_rate * 100) / 100 / 12)
         principle = Decimal(self.loan)
-        #print "principle {0}".format(principle)
-        #print "rate as decimal {0}".format(monthly_rate)
 
         repayments = (principle * monthly_rate) / (1 -((1 + monthly_rate) ** (-REPAYMENTPERIOD)))
-
-        #print "repayments {0}".format(repayments)
 
         return Decimal(repayments)
